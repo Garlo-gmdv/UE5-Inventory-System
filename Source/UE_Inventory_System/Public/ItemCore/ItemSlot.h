@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ItemDefinition.h"
+#include "ItemCore/ItemDefinition.h"
 #include "ItemSlot.generated.h"
 
 /**
