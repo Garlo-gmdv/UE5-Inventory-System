@@ -46,6 +46,36 @@ int32 UInventoryComponent::AddItem(UItemDefinition* ItemType, int32 Amount)
 	return Amount;
 }
 
+bool UInventoryComponent::RemoveItem(UItemDefinition* ItemType, int32 Amount)
+{
+	if (HasEnoughItem(ItemType, Amount))
+	{
+		TArray<FItemSlot*> CorrespondingSlots = GetAllSlotsOfType(ItemType);
+		int32 i = 0;
+		while (i < CorrespondingSlots.Num() && Amount > 0)
+		{
+			Amount = CorrespondingSlots[i]->RemoveAmount(Amount);
+			++i;
+		}
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool UInventoryComponent::HasEnoughItem(UItemDefinition* ItemType, int32 Amount)
+{
+	TArray<FItemSlot*> CorrespondingSlots = GetAllSlotsOfType(ItemType);
+	int32 TotalAmount = 0;
+	for (FItemSlot* Item : CorrespondingSlots)
+	{
+		TotalAmount += Item->GetAmount();
+	}
+	return TotalAmount >= Amount;
+}
+
 void UInventoryComponent::DebugPrint() const
 {
 	UE_LOG(LogTemp, Display, TEXT("Debug start."))

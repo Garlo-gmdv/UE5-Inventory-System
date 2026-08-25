@@ -28,6 +28,19 @@ public:
 	*/
 	UFUNCTION(BlueprintCallable)
 	int32 AddItem(UItemDefinition* ItemType, int32 Amount);
+
+	/*
+		Adds the item to available slots, returns if the remove is successful. true if the inventory has enough items false if not.
+	*/
+	UFUNCTION(BlueprintCallable)
+	bool RemoveItem(UItemDefinition* ItemType, int32 Amount);
+
+	/*
+		Returns true if the inventory has the specified amount of the ItemType. Do not use with RemoveItem, use the return value of RemoveItem instead.
+	*/
+	UFUNCTION(BlueprintCallable)
+	bool HasEnoughItem(UItemDefinition* ItemType, int32 Amount);
+
 	UFUNCTION(BlueprintCallable)
 	void DebugPrint() const;
 

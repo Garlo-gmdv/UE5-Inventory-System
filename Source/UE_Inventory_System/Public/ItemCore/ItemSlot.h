@@ -21,6 +21,11 @@ protected:
 
 public:
 
+	int32 GetAmount() const
+	{
+		return Amount;
+	}
+
 	/*
 		Adds the amount to the slot. Returns the overflow based on Item->MaxStack.
 	*/
@@ -48,6 +53,7 @@ public:
 		{
 			int32 Overflow = Value - Amount;
 			Amount = 0;
+			ChangeSlotItem(nullptr);
 			return Overflow;
 		}
 		else
