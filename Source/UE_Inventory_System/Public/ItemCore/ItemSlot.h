@@ -21,9 +21,22 @@ protected:
 
 public:
 
-	void AddAmount(int32 Value)
+	/*
+		Adds the amount to the slot. Returns the overflow based on Item->MaxStack.
+	*/
+	int32 AddAmount(int32 Value)
 	{
-		Amount += Value;
+		if (Amount + Value > Item->MaxStack)
+		{
+			int32 Overflow = Value - (Item->MaxStack - Amount);
+			Amount = Item->MaxStack;
+			return Overflow;
+		}
+		else
+		{
+			Amount += Value;
+			return 0;
+		}
 	}
 
 	void RemoveAmount(int32 Value)
@@ -34,6 +47,11 @@ public:
 	bool IsSameItem(const FItemSlot &Other) const
 	{
 		return Item == Other.Item;
+	}
+
+	bool HasItemType(const UItemDefinition* ItemType) const
+	{
+		return Item == ItemType;
 	}
 
 	void EmptySlot()
@@ -48,6 +66,11 @@ public:
 	}
 
 	void ChangeSlotItem(TObjectPtr<UItemDefinition> NewItem)
+	{
+		Item = NewItem;
+	}
+
+	void ChangeSlotItem(UItemDefinition* NewItem)
 	{
 		Item = NewItem;
 	}
