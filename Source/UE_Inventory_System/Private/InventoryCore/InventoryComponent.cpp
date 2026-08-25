@@ -11,7 +11,10 @@ UInventoryComponent::UInventoryComponent()
 	PrimaryComponentTick.bCanEverTick = true;
 
 	// ...
+}
 
+void UInventoryComponent::InitializeInventory()
+{
 	Items.Init(FItemSlot(), SlotNumber);
 }
 

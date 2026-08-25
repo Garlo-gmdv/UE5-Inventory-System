@@ -20,6 +20,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
 	int32 SlotNumber = 10;
 
+	UFUNCTION(BlueprintCallable)
+	void InitializeInventory();
+
 	/*
 		Adds the item to available slots, returns the overflow.
 	*/
