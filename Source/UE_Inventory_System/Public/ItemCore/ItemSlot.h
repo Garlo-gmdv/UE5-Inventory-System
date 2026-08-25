@@ -74,4 +74,19 @@ public:
 	{
 		Item = NewItem;
 	}
+
+	FString ToString() const
+	{
+		if (IsSlotEmpty())
+		{
+			return TEXT("Empty");
+		}
+		else
+		{
+			return FString::Printf(
+				TEXT("%s x%d"),
+				*Item->DisplayName.ToString(),
+				Amount);
+		}
+	}
 };

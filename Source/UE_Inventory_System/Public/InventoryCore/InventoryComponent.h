@@ -25,6 +25,8 @@ public:
 	*/
 	UFUNCTION(BlueprintCallable)
 	int32 AddItem(UItemDefinition* ItemType, int32 Amount);
+	UFUNCTION(BlueprintCallable)
+	void DebugPrint() const;
 
 protected:
 	// Called when the game starts

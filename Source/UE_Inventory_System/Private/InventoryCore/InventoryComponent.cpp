@@ -43,6 +43,16 @@ int32 UInventoryComponent::AddItem(UItemDefinition* ItemType, int32 Amount)
 	return Amount;
 }
 
+void UInventoryComponent::DebugPrint() const
+{
+	UE_LOG(LogTemp, Display, TEXT("Debug start."))
+	for (const FItemSlot& Item : Items)
+	{
+		UE_LOG(LogTemp, Display, TEXT("--- Slot: %s"), *Item.ToString())
+	}
+	UE_LOG(LogTemp, Display, TEXT("Debug end."))
+}
+
 
 // Called when the game starts
 void UInventoryComponent::BeginPlay()
