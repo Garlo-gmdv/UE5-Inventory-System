@@ -39,9 +39,22 @@ public:
 		}
 	}
 
-	void RemoveAmount(int32 Value)
+	/*
+		Removes the amount from the slot. Returns the overflow based on 0.
+	*/
+	int32 RemoveAmount(int32 Value)
 	{
-		Amount -= Value;
+		if (Amount - Value <= 0) // <= for the item type change
+		{
+			int32 Overflow = Value - Amount;
+			Amount = 0;
+			return Overflow;
+		}
+		else
+		{
+			Amount -= Value;
+			return 0;
+		}
 	}
 
 	bool IsSameItem(const FItemSlot &Other) const
