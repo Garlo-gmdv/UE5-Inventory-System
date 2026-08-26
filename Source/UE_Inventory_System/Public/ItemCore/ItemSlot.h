@@ -9,14 +9,16 @@
 /**
  * 
  */
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FItemSlot
 {
 	GENERATED_BODY()
 
 protected:
 
+	UPROPERTY(BlueprintReadOnly)
 	TObjectPtr<UItemDefinition> Item = nullptr;
+	UPROPERTY(BlueprintReadOnly)
 	int32 Amount = 0;
 
 public:
