@@ -41,6 +41,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool HasEnoughItem(UItemDefinition* ItemType, int32 Amount);
 
+	/*
+		Returns a copy of the current slots. Use only as a way of reading the data.
+	*/
+	UFUNCTION(BlueprintCallable)
+	TArray<FItemSlot> GetSlots() const;
+
 	UFUNCTION(BlueprintCallable)
 	void DebugPrint() const;
 

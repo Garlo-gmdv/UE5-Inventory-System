@@ -76,6 +76,11 @@ bool UInventoryComponent::HasEnoughItem(UItemDefinition* ItemType, int32 Amount)
 	return TotalAmount >= Amount;
 }
 
+TArray<FItemSlot> UInventoryComponent::GetSlots() const
+{
+	return Items;
+}
+
 void UInventoryComponent::DebugPrint() const
 {
 	UE_LOG(LogTemp, Display, TEXT("Debug start."))
