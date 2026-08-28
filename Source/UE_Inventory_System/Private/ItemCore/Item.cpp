@@ -11,6 +11,16 @@ AItem::AItem()
 
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh_0"));
 	SetRootComponent(Mesh);
+	Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	CollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent_0"));
+	CollisionSphere->SetupAttachment(RootComponent);
+	CollisionSphere->InitSphereRadius(80.0f);
+	CollisionSphere->SetCollisionProfileName(TEXT("OverlapAllDynamic"));
+	CollisionSphere->SetCollisionObjectType(ECollisionChannel::ECC_WorldDynamic);
+	CollisionSphere->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+
+	// DEBUG
+	CollisionSphere->SetHiddenInGame(false);
 }
 
 // Called when the game starts or when spawned

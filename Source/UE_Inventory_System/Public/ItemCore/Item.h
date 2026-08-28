@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "ItemCore/ItemDefinition.h"
+#include "Components/SphereComponent.h"
 #include "Item.generated.h"
 
 UCLASS(BlueprintType)
@@ -16,6 +17,7 @@ public:
 	// Sets default values for this actor's properties
 	AItem();
 	TObjectPtr<UStaticMeshComponent> Mesh = nullptr;
+	TObjectPtr<USphereComponent> CollisionSphere = nullptr;
 
 protected:
 	// Called when the game starts or when spawned
