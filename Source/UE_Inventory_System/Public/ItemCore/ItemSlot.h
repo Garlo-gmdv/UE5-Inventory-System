@@ -65,6 +65,11 @@ public:
 		}
 	}
 
+	TObjectPtr<UItemDefinition> GetItemDefinition() const
+	{
+		return Item;
+	}
+
 	bool IsSameItem(const FItemSlot &Other) const
 	{
 		return Item == Other.Item;

@@ -76,6 +76,17 @@ bool UInventoryComponent::HasEnoughItem(UItemDefinition* ItemType, int32 Amount)
 	return TotalAmount >= Amount;
 }
 
+void UInventoryComponent::DropItem(int32 ItemIndex)
+{
+	if (!Items[ItemIndex].IsSlotEmpty())
+	{
+		FActorSpawnParameters SpawnParameters = FActorSpawnParameters();
+		SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+		GetWorld()->SpawnActor<AItem>(AItem::StaticClass(), GetOwner()->GetActorTransform(), SpawnParameters)->Initialize(Items[ItemIndex].GetAmount(), Items[ItemIndex].GetItemDefinition());
+		Items[ItemIndex].EmptySlot();
+	}
+}
+
 TArray<FItemSlot> UInventoryComponent::GetSlots() const
 {
 	return Items;

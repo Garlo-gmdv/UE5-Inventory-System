@@ -30,15 +30,27 @@ void AItem::OnItemPickedUp()
 	Destroy();
 }
 
+void AItem::Initialize(int32 InAmount, TObjectPtr<UItemDefinition> InItemType)
+{
+	Amount = InAmount;
+	ItemType = InItemType;
+	UpdaterRenderedMesh();
+}
+
+void AItem::UpdaterRenderedMesh()
+{
+	if (ItemType)
+	{
+		Mesh->SetStaticMesh(ItemType->Mesh);
+	}
+}
+
 // Called when the game starts or when spawned
 void AItem::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	if (ItemType)
-	{
-		Mesh->SetStaticMesh(ItemType->Mesh);
-	}
+	UpdaterRenderedMesh();
 }
 
 // Called every frame

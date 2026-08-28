@@ -24,6 +24,16 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void OnItemPickedUp();
 
+	/*
+		Use in C++ to initialize the values of the object after spawning it.
+	*/
+	void Initialize(int32 InAmount, TObjectPtr<UItemDefinition> InItemType);
+
+	/*
+		Updates the mesh component to avoid desynchronisation between it and the value of ItemType.
+	*/
+	void UpdaterRenderedMesh();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
