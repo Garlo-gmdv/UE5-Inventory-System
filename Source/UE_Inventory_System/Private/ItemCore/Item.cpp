@@ -18,9 +18,16 @@ AItem::AItem()
 	CollisionSphere->SetCollisionProfileName(TEXT("OverlapAllDynamic"));
 	CollisionSphere->SetCollisionObjectType(ECollisionChannel::ECC_WorldDynamic);
 	CollisionSphere->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+}
 
-	// DEBUG
-	CollisionSphere->SetHiddenInGame(false);
+void AItem::UpdateItemAmount(int32 InAmount)
+{
+	Amount = InAmount;
+}
+
+void AItem::OnItemPickedUp()
+{
+	Destroy();
 }
 
 // Called when the game starts or when spawned

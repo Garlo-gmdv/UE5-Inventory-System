@@ -19,6 +19,11 @@ public:
 	TObjectPtr<UStaticMeshComponent> Mesh = nullptr;
 	TObjectPtr<USphereComponent> CollisionSphere = nullptr;
 
+	UFUNCTION(BlueprintCallable)
+	void UpdateItemAmount(int32 InAmount);
+	UFUNCTION(BlueprintCallable)
+	void OnItemPickedUp();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
