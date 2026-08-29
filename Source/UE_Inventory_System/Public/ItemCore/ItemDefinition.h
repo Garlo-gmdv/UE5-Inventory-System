@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType)
 class UE_INVENTORY_SYSTEM_API UItemDefinition : public UDataAsset
 {
 	GENERATED_BODY()
@@ -24,4 +24,7 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Core")
 	int32 MaxStack = 1;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Render")
+	TObjectPtr<UStaticMesh> Mesh = nullptr;
 };

@@ -6,6 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "ItemCore/ItemDefinition.h"
 #include "ItemCore/ItemSlot.h"
+#include "ItemCore/Item.h"
 #include "InventoryComponent.generated.h"
 
 
@@ -40,6 +41,9 @@ public:
 	*/
 	UFUNCTION(BlueprintCallable)
 	bool HasEnoughItem(UItemDefinition* ItemType, int32 Amount);
+
+	UFUNCTION(BlueprintCallable)
+	void DropItem(int32 ItemIndex);
 
 	/*
 		Returns a copy of the current slots. Use only as a way of reading the data.
